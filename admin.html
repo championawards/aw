@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin &middot; Inclusion Champions</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<div id="loginScreen" class="login-screen">
+  <form id="loginForm" class="login-card">
+    <h2>Admin sign in</h2>
+    <label for="username">Username</label>
+    <input type="text" id="username" required>
+    <label for="password">Password</label>
+    <input type="password" id="password" required>
+    <button type="submit" class="btn-primary">Sign in</button>
+    <p id="loginError" class="error-text hidden"></p>
+  </form>
+</div>
+
+<div id="adminApp" class="admin-app hidden">
+  <header class="admin-header">
+    <div class="wrap admin-header-inner">
+      <span class="logo">Inclusion<span>Champions — Admin</span></span>
+      <div class="admin-header-actions">
+        <label class="toggle-label">
+          Voting
+          <input type="checkbox" id="votingToggle">
+          <span id="votingStatusText">open</span>
+        </label>
+        <button id="logoutBtn" class="btn-ghost">Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap admin-main">
+
+    <section class="admin-summary">
+      <div class="summary-card">
+        <p class="summary-label">Total revenue</p>
+        <p class="summary-value" id="totalRevenue">KSh 0</p>
+      </div>
+      <div class="summary-card">
+        <p class="summary-label">Vote cost</p>
+        <p class="summary-value"><span id="voteCostValue">20</span>
+          <button class="btn-ghost small" id="editVoteCostBtn">edit</button>
+        </p>
+      </div>
+      <div class="summary-card">
+        <button class="btn-ghost" id="exportBtn">Export payments (CSV)</button>
+      </div>
+    </section>
+
+    <section class="admin-section">
+      <div class="admin-section-head">
+        <h3>Categories &amp; nominees</h3>
+        <button class="btn-primary small" id="addCategoryBtn">+ Add category</button>
+      </div>
+      <div id="categoryManager"></div>
+    </section>
+
+    <section class="admin-section">
+      <h3>Recent payments</h3>
+      <table class="admin-table" id="paymentsTable">
+        <thead>
+          <tr><th>Date</th><th>Nominee</th><th>Category</th><th>Phone</th><th>Votes</th><th>Amount</th><th>Status</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<!-- Category form modal -->
+<div id="categoryModal" class="modal hidden">
+  <div class="modal-card">
+    <button class="modal-close" data-close-modal="categoryModal">&times;</button>
+    <h3>Category</h3>
+    <form id="categoryForm">
+      <input type="hidden" id="categoryId">
+      <label for="categoryName">Name</label>
+      <input type="text" id="categoryName" required>
+      <label for="categoryDescription">Description</label>
+      <input type="text" id="categoryDescription">
+      <button type="submit" class="btn-primary">Save category</button>
+    </form>
+  </div>
+</div>
+
+<!-- Nominee form modal -->
+<div id="nomineeModal" class="modal hidden">
+  <div class="modal-card">
+    <button class="modal-close" data-close-modal="nomineeModal">&times;</button>
+    <h3>Nominee</h3>
+    <form id="nomineeForm">
+      <input type="hidden" id="nomineeId">
+      <input type="hidden" id="nomineeCategoryId">
+      <label for="nomineeName">Full name</label>
+      <input type="text" id="nomineeName" required>
+      <label for="nomineeBio">Short bio</label>
+      <input type="text" id="nomineeBio">
+      <label for="nomineePhoto">Photo URL</label>
+      <input type="text" id="nomineePhoto" placeholder="images/name.jpg">
+      <button type="submit" class="btn-primary">Save nominee</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
