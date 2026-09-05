@@ -1,4 +1,4 @@
-const API_BASE = 'https://YOUR-BACKEND.onrender.com/api'; // TODO: replace after backend is deployed
+const API_BASE = 'https://championbackend.onrender.com/api';
 
 let selectedNominee = null;
 let selectedCategory = null;
